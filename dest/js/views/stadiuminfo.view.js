@@ -1,0 +1,1 @@
+define(["backbone","text!../templates/stadiuminfo.tpl.html","puck","baseview"],function(e,t,n,r){var i=r.extend({tplFun:null,events:{},onInit:function(){this.tplFun=_.template(t)},onShow:function(e){var t=this.tplFun(e.data);this.$el.html(t)},onHide:function(){}});return i})

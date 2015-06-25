@@ -6,16 +6,17 @@ define(['backbone','puck'], function (backbone, puck) {
     show404: function (){
       //TODO
     },
+    back: function (index){
+      puck.back(index);
+    },
     showLoading: function (){
-      //TODO;
-      console.log("show loading!");
+      puck.showLoading();
     },
     hideLoading: function (){
-      //TODO;
-      console.log("hide loading!");
+      puck.hideLoading();
     },
-    checkLogin: function (){
-      //TODO
+    onScroll: function (){
+      console.log("scrolling!");
     }
   });
   

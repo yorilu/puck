@@ -1,0 +1,1 @@
+(function(e){MediaElementPlayer.prototype.buildvisualcontrols=function(e,t,n,r){if(!e.isVideo)return}})(mejs.$)

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui"/>
+  <meta name="apple-mobile-web-app-title" content="全部场馆"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta content="telephone=no" name="format-detection"/>
+  <link rel="stylesheet" type="text/css" href="../resource/style/css/main.css"/>
+  <title>分享</title>
+</head>
+<body>
+<div class="row2">
+  <!--head-->
+  <div class="head">
+    <nav>
+      <h1 id="j_share_video_title">
+      </h1>
+    </nav>
+  </div>
+  <!---->
+  <!--part1container-->
+  <!--main-->
+  <div class="main2">
+    <div class="col-share">
+      <div class="bg-img">
+        <!--<img src="/style/img/demo3.jpg"/>-->
+      </div>
+      <a href="javascript:" class="dw-link"><span class="logo1">下载智慧运动场,获取更多赛事视频</span></a>
+      <a href="javascript:" class="play-btn"></a>
+
+      <div class="video2">
+        <video id="j_share_video_player" controls="controls" src=""></video>
+      </div>
+    </div>
+    <div class="main">
+      <ul class="tv-list" id="j_share_video_list">
+
+      </ul>
+    </div>
+  </div>
+</div>
+<script src="../resource/libs/zepto.js"></script>
+
+<script id="j_share_video_list_tpl" type="text/x-template">
+  <% for(var i in data){
+  var item = data[i]%>
+  <li class="j_share_video_item" data-src="<%= item.path%>" data-title="<%= item.title%>">
+    <a href="javascript:void(0)" class="container2">
+      <img src="<%= item.snapshot %>"/>
+      <dl>
+        <dt><%= item.title %></dt>
+        <dd><%= item.startTime %></dd>
+      </dl>
+    </a>
+  </li>
+  <% } %>
+
+</script>
+<script type="application/javascript">
+
+  (function () {
+
+    function getUrlParam(url, name) {
+      var re = new RegExp("(\\?|&)" + name + "=([^&]+)(&|$)", "i"),
+        m = url.match(re);
+      return m ? m[2] : "";
+    }
+
+    var list = $('#j_share_video_list'),
+      tpl = $('#j_share_video_list_tpl'),
+      $title = $('#j_share_video_title'),
+      $player = $('#j_share_video_player'),
+      url = window.location.href.replace(/@and@/, '&')
+
+    var videoUrl = getUrlParam(url, 'video_url'),
+      gameName = decodeURI(getUrlParam(url, 'game_name')),
+      videoName = decodeURI(getUrlParam(url, 'video_name')),
+      sportType = getUrlParam(url, 'sport_type');
+
+    $('#j_share_video_title').html(videoName || gameName);
+    $('#j_share_video_player').attr('src',videoUrl);
+    window.document.title = videoName;
+
+    var env = '', serveUrl = '', param = {
+      clientId: "h5",
+      level: "5",
+      pageIndex: 1,
+      pageSize: 10,
+      sportType: sportType
+    };
+    if (url.indexOf('.uat') > -1) {
+      env = '.uat';
+    } else if (url.indexOf('.test') > -1) {
+      env = '.test1'
+    } else if (url.indexOf('192.168') > -1) {
+      env = '.uat';
+    }
+
+    serveUrl = 'http://video.cloud' + env + '.smartcourt.cn/Cloud-Video-ClipInfo/getTopNVideo';
+
+    $.ajax({
+      type: 'POST',
+      url: serveUrl,
+      data: JSON.stringify(param),
+      contentType: "text/plain; charset=UTF-8",
+      success: function (res) {
+        var fun = _.template(tpl.html());
+        list.html(fun(res));
+      }
+    })
+
+
+    list.on('click',function(e){
+      var dom = $(e.target).parents('li');
+      var src = dom.data('src'), title = dom.data('title');
+      document.title = title;
+      $title.html(title);
+      $player.attr('src',src);
+      $player[0].play();
+    })
+
+  })();
+
+</script>
+
+
+</body>
+</html>

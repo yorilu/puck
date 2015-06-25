@@ -1,0 +1,63 @@
+<div class="head1">
+      <nav>
+        <h1>
+          场馆
+        </h1>
+        <a href="javascript:void(0);" class="loctn js_goCityList" >北京</a>
+      </nav>
+    </div>
+    <!---->
+    <div class="wrapper">
+      <!--part1-->
+      <div class="container">
+        <div class="content1">
+          <div class="row stadium-hd js_type" >
+            <div class="col-25 sta-seted" data-value="">全部</div>
+            <div class="col-25" data-value="basketball">篮球</div>
+            <div class="col-25" data-value="football">足球</div>
+            <div class="col-25" data-value="badminton">羽毛球</div>
+          </div>
+        </div>
+        <!--main-->
+        <div id="js_stadiumContainer">
+          
+        </div>
+      </div>
+       <!--part2-->
+     </div>
+         <script type="text/template" id="stadium_tpl">
+          <div class="venue-main">
+            <ul>
+        <%for(var i=0,len=data.length;i<len;i++){%>
+                      <li class="js_stadiumlist_item" data-stadiumid="<%= data[i].id%>">
+                <a href="javascript:" class="ven-wrap">
+                  <span class="ven-img"><img src="<%=data[i].images%>"/></span>
+                  <div class="presents">
+                    <h5><%=data[i].name%></h5>
+                    <ul class="stad-bd">
+                        <% var _sporttype=data[i].sportType.split(','),other=false;%>
+                          <%for(var j=0,leng=_sporttype.length;j<leng;j++){%>
+                                      <% if(_sporttype[j] == 'badminton'){%>
+                                              <li class="bad-mtion"></li>
+                                            <%} else if(_sporttype[j] == 'basketball'){ %>
+                                              <li class="bsk-ball"></li>
+                                            <%} else if(_sporttype[j] == 'football') {%>
+                                              <li class="ft-ball"></li>
+                                            <%}else if(!other){other=true;%>
+                                              <li class="musclu2"></li>
+                                              <%}%>
+                            <%}%>
+                    </ul>
+                  </div>
+                </a>
+                <p class="addres"><%=data[i].address%></p>
+              </li>
+        <%}%>
+                    </ul>
+        </div>
+    </script>
+     <script type="text/template" id="no_stadium_tpl">
+             <div class="ven-out">
+         <div class="venue-no">暂无场馆信息</div>
+         </div>
+    </script>

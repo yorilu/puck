@@ -1,0 +1,54 @@
+<div class="gam-head">
+  <nav>
+    <a href="javascript:" class="return"><i class="pre-icon"></i></a>
+    <span class="schedules">
+      <% if(status == 2) {%>
+        已结束
+      <% } else if(status == 1){%>
+        正在直播
+      <% } else if(status == 0){%>
+        即将开始
+      <% } %>
+    </span>
+  </nav>
+  <div class="pasts2">
+    <div class="row">
+      <div class="col-25"><a href="javascript:" class="tm-logo"><img src="../style/img/team_<%= homeTeamLogoId||1 %>.png"/></a></div>
+      <div class="col-50">
+        <div class="row">
+          <div class="col col-45">
+            <p class="bega"><%= teamAScore %></p>
+            <span class="score-name"><%= homeTeamName %></span>
+          </div>
+          <div class="col-10 point">:</div>
+          <div class="col col-45">
+            <p class="bega"><%= teamBScore %></p>
+            <span class="score-name"><%= guestTeamName %></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-25"><a href="javascript:" class="tm-logo"><img src="../style/img/team_<%= guestTeamLogoId%>.png"/></a></div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <!--part1-->
+  <div class="data-nav">
+    <ul class="row j_game_tab">
+      <% if (sportType == 'basketball') { %>
+      <li class="col-33 data-chat"><a href="javascript:void(0);">事件</a></li>
+      <% }%>
+      <li class="col-33"><a href="javascript:void(0);">视频</a></li>
+      <% if (sportType == 'basketball') { %>
+      <li class="col-33"><a href="javascript:void(0);">统计</a></li>
+      <% }%>
+    </ul>
+  </div>
+
+  <div class="dataMain j_game_tab_content">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>

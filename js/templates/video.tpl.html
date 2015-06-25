@@ -1,0 +1,42 @@
+<div class="row2">
+  <div class="head">
+    <nav>
+      <h1 id="j_share_video_title">
+
+      </h1>
+    </nav>
+  </div>
+  <!--main-->
+  <div class="main2">
+    <div class="col-share">
+      <!--<div class="bg-img"><img src="../style/img/demo3.jpg"/></div>-->
+      <div class="bg-img j_bg_img">
+        <!--<img src="../style/img/demo3.jpg"/>-->
+      </div>
+      <a href="javascript:void(0)" class="dw-link"><span class="logo1">下载智慧运动场,获取更多赛事视频</span></a>
+      <a href="javascript:void(0)" class="play-btn"></a>
+
+      <div class="video2">
+        <video id="j_share_video_player" controls="controls" src=""></video>
+      </div>
+    </div>
+    <ul class="tv-list" id="j_share_video_list">
+    </ul>
+  </div>
+</div>
+
+<script id="j_share_video_list_tpl" type="text/x-template">
+  <% for(var i in data){
+  var item = data[i]%>
+  <li class="j_share_video_item" data-src="<%= item.path%>">
+    <a href="javascript:void(0)" class="container2">
+      <img src="<%= item.snapshot %>"/>
+      <dl>
+        <dt><%= item.title %></dt>
+        <dd><%= item.startTime %></dd>
+      </dl>
+    </a>
+  </li>
+  <% } %>
+
+</script>

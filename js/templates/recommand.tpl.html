@@ -1,0 +1,116 @@
+<!--head-->
+    <div class="head1">
+      <nav>
+        <h1>
+          <img src="../style/img/logo.png"/>
+        </h1>
+        <a href="javascript:" class="tips js_goFeedback" >用户反馈</a>
+      </nav>
+    </div>
+    <!---->
+    <div class="wrapper">
+      <!--part1-->
+              <div class="container">
+        <div class="content1">
+          <span class="h5">精彩赛事</span>
+          <a href="javascript:" class="more" id="js_goGames">更多</a>
+        </div>
+       <div class="add-top js_download">
+        <a href="javascript:" class="down-ad"></a>
+        </div>
+        <!--main-->
+        <div class="main">
+          <ul id='js_gameContainer'>
+            
+          </ul>
+        </div>
+      </div>
+       <!--part2-->
+      <div class="container">
+        <div class="content">
+          <span class="h5">精彩视频</span>
+          <a href="javascript:" class="more" id='js_goTopVideo'>更多</a>
+        </div>
+        <!--main-->
+        <div class="main">
+          <ul id='js_videoContainer'>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+
+        <script type="text/template" id="games_tpl">
+        <%var b_num=1,f_num=1;%>
+        <%for(var i=0,len=data.length;i<len;i++){%>
+                    <li class="column js_game" data-gameid="<%= data[i].id%>" data-path="<%= data[i].livePushUrl%>"
+      data-status="<%= data[i].status%>" data-title="<%= data[i].stadiumName%>">
+              <div class="bg-img">
+               <% if(data[i].sportType == 'basketball'){%>
+                      <img src="../style/img/basketballbg_<%=b_num%>.jpg"/>
+                    <%b_num++;} else if(data[i].sportType == 'football'){ %>
+                      <img src="../style/img/footballbg_<%=f_num%>.jpg"/>
+                    <%f_num++;} %>
+              </div>              
+              <div class="row team-bech">
+                <div class="col-25"><a href="javascript:" class="tm-logo"><img src="../style/img/team_<%=data[i].homeTeamLogoId%>.png"/></a></div>
+                    <div class="col-50">  
+                         <% if(data[i].status == 0){%>
+                     <div class="contain2">未开始</div>
+                        <div class="row tm-detail">
+                          <div class="col-33"><%=data[i].homeTeamName%></div>
+                          <div class="col-33">vs</div>
+                          <div class="col-33"><%=data[i].guestTeamName%></div>
+                        </div>
+                    <%} else if(data[i].status == 1||data[i].status == 4){ %>
+                     <div class="row">
+                          <div class="col-40">
+                             <p class="bega"><%=data[i].teamAScore%></p>
+                             <span class="score-name"><%=data[i].homeTeamName%></span>
+                          </div>
+                          <div class="col-20 point">:</div>
+                          <div class="col-40">
+                             <p class="bega"><%=data[i].teamBScore%></p>
+                             <span class="score-name"><%=data[i].guestTeamName%></span>
+                          </div>
+                        </div>
+                    <%} else if(data[i].status == 2||data[i].status == 3) {%>
+                       <div class="row">
+                          <div class="col-40">
+                             <p class="bega"><%=data[i].teamAScore%></p>
+                             <span class="score-name"><%=data[i].homeTeamName%></span>
+                          </div>
+                          <div class="col-20 point">:</div>
+                          <div class="col-40">
+                             <p class="bega"><%=data[i].teamBScore%></p>
+                             <span class="score-name"><%=data[i].guestTeamName%></span>
+                          </div>
+                        </div>
+                    <%}%>
+                    </div>
+                      <div class="col-25"><a href="javascript:" class="tm-logo"><img src="../style/img/team_<%=data[i].guestTeamLogoId%>.png"/></a></div>
+                    </div>
+                    <!--mark-->
+                    <div class="marked">
+                            <% if(data[i].status == 0){var arr=data[i].startTime.replace(" ",":").replace(/\:/g,"-").split("-")%>
+                      <a href="javascript:" class="mark-tm"><%=arr[3]+':'+arr[4]%></a>
+                      <p class="conduct">进行直播</p>
+                    <%} else if(data[i].status == 1||data[i].status == 4){ %>
+                      <a href="javascript:" class="lives">Live</a>
+                      <p class="conduct">直播中...</p>
+                    <%} else if(data[i].status == 2||data[i].status == 3) {%>
+                      <p class="conduct">已结束</p>
+                    <%}%>
+                    </div>   
+            </li>
+        <%}%>
+    </script>
+    <script type="text/template" id="videos_tpl">
+        <%for(var i=0,len=data.length;i<len;i++){%>
+                <li class="column" data-path="<%=data[i].path%>" data-title="<%=data[i].title%>">
+                      <div class="bg-img"><img src="<%=data[i].snapshot%>"/></div>
+                      <p class="p"><%=data[i].title%></p>
+                      <div class="big-pat v-overlay-small"></div>
+                    </li> 
+        <%}%>
+    </script>

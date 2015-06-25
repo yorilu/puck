@@ -1,0 +1,24 @@
+define([
+  'main',
+  'backbone',
+  'zepto',
+  'zepto-extras',
+  'underscore',
+  'text',
+  'touch',
+  'zepto',
+  'callback',
+  'deferred',
+  'fastclick',
+  'videoPlayer',
+  'scroller',
+  'puck',
+  'workspace',
+  'basemodel',
+  'baseview',
+  'modelFactory',
+  'config',
+  'utils'
+  ],
+  function() {}
+);

@@ -1,0 +1,162 @@
+<div class="main">
+    <!--section3-->
+  <div class="data-tb">
+    <div class="dt-main">
+    <!--allCore-->
+      <div class="formHd">
+        <ul class="row set-hd">
+          <li class="col-34"></li>
+          <li class="col-66">
+            <div class="row-2">
+              <% 
+                var all = 0;
+                for(var i =0;i<scor.length;i++){
+                all+=scor[i].teamAScore;
+              %>
+              <span class="col"><%=i+1%></span>
+              <%}%>
+              <span class="col">总分</span>
+            </div>
+          </li>
+        </ul>
+        <div class="gam-form">
+          <ul class="row">
+            <li class="col-34"><%=args.homeTeamName%></li>
+            <li class="col-66">
+              <div class="row-2">
+                <% 
+                  var all = 0;
+                  for(var i =0;i<scor.length;i++){
+                  all+=scor[i].teamAScore;
+                %>
+                  <span><%=scor[i].teamAScore%></span>
+                <%}%>
+                <span><%=all%></span>
+              </div>
+            </li>
+          </ul>
+          <ul class="row">
+            <li class="col-34"><%=args.guestTeamName%></li>
+            <li class="col-66">
+              <div class="row-2">
+                <% 
+                  var all = 0;
+                  for(var i =0;i<scor.length;i++){
+                  all+=scor[i].teamBScore;
+                %>
+                  <span><%=scor[i].teamBScore%></span>
+                <%}%>
+                <span><%=all%></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <!--allEnd-->
+    <!--tbDetal1-->
+      <div class="dt-content J_FixTable">
+         <h4 class="clo-name"><%=args.homeTeamName%></h4>
+         <p class="ad-user">球员</p>
+         <div class="row bat-hd">
+                <div class="col J_Top">
+                  <span>得分</span>
+                  <span>篮板</span>
+                  <span>助攻</span>
+                  <span>抢断</span>
+                  <span>犯规</span>
+                  <span>失误</span>
+                  <span>二分</span>
+                  <span>三分</span>
+                  <span>罚球</span>
+                  <span>效率</span>
+                </div>
+         </div>
+         <!--number-->
+         <div class="lt-hd J_Left">
+            <ul>
+              <%for(var i=0;i<stat.teamA.length;i++){
+               var item = stat.teamA[i];
+               %> 
+              <li class="sco-use"><%=item.playerName%></li>
+              <%}%>
+            </ul>                     
+         </div>
+         <div class="col2-bd J_Table">
+            <!--ball1-->
+           
+           <%for(var i=0;i<stat.teamA.length;i++){
+           var item = stat.teamA[i];
+           %>   
+             <div class="single row">
+               <div class="col">
+                  <span><%=item.score%></span>
+                  <span><%=item.backboard%></span>
+                  <span><%=item.assist%></span>
+                  <span><%=item.steal%></span>
+                  <span><%=item.foul%></span>
+                  <span><%=item.turnover%></span>
+                  <span><%=item.twoPointShot%></span>
+                  <span><%=item.threePointShot%></span>
+                  <span><%=item.freeThrow%></span>
+                  <span><%=item.efficiency%></span>
+               </div>
+             </div>
+           <%}%>
+        </div>
+      </div>   
+    <!--end tbDetal1-->
+    <!--tbDetal2-->
+      <div class="dt-content J_FixTable">
+         <h4 class="clo-name"><%=args.guestTeamName%></h4>
+         <p class="ad-user">球员</p>
+         <div class="row bat-hd">
+                <div class="col J_Top">
+                  <span>得分</span>
+                  <span>篮板</span>
+                  <span>助攻</span>
+                  <span>抢断</span>
+                  <span>犯规</span>
+                  <span>失误</span>
+                  <span>二分</span>
+                  <span>三分</span>
+                  <span>罚球</span>
+                  <span>效率</span>
+                </div>
+         </div>
+         <!--number-->
+         <div class="lt-hd J_Left">
+            <ul>
+              <%for(var i=0;i<stat.teamB.length;i++){
+               var item = stat.teamB[i];
+               %> 
+              <li class="sco-use"><%=item.playerName%></li>
+              <%}%>
+            </ul>                     
+         </div>
+         <div class="col2-bd J_Table">
+            <!--ball1-->
+           
+           <%for(var i=0;i<stat.teamB.length;i++){
+           var item = stat.teamB[i];
+           %>   
+             <div class="single row">
+               <div class="col">
+                  <span><%=item.score%></span>
+                  <span><%=item.backboard%></span>
+                  <span><%=item.assist%></span>
+                  <span><%=item.steal%></span>
+                  <span><%=item.foul%></span>
+                  <span><%=item.turnover%></span>
+                  <span><%=item.twoPointShot%></span>
+                  <span><%=item.threePointShot%></span>
+                  <span><%=item.freeThrow%></span>
+                  <span><%=item.efficiency%></span>
+               </div>
+             </div>
+           <%}%>
+        </div>
+      </div>   
+    <!--end tbDetal2-->
+    </div>
+  </div>
+</div>

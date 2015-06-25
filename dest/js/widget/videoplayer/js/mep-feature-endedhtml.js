@@ -1,0 +1,1 @@
+(function(e){e.extend(MediaElementPlayer.prototype,{buildendedhtml:function(e,t,n,r){if(!e.isVideo)return}})})(mejs.$)

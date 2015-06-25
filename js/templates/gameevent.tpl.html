@@ -1,0 +1,61 @@
+<div class="case-pat">
+  <p class="case-hd" id="j_game_event_game_des"></p>
+
+  <div class="caseBd">
+    <ul class="csOne" id="j_game_event_ul_wrapper">
+    </ul>
+  </div>
+</div>
+
+<div class="no-data" style="display: none">
+  <p>抱歉，没有与当前赛事相关的事件</p>
+</div>
+
+<!--小节模板-->
+<script id="j_game_event_period_tpl" type="text/template">
+
+  <% _.each(data,function(peroid,key){
+  %>
+  <li class="case-stp">
+    <div class="csLge">
+      <% if(peroid.start) { %>
+      <p class="step1"><%= peroid.start.description %></p>
+      <% } %>
+      <div class="notes">
+        <ul id="j_game_event_period_wapper_<%= key %>"></ul>
+      </div>
+      <% if(peroid.end) { %>
+      <p class="case-end"><%= peroid.end.description %></p>
+      <% } %>
+    </div>
+  </li>
+  <% }) %>
+</script>
+
+<!--小节内容模板-->
+<script id="j_game_event_period_evts_tpl" type="text/template">
+
+  <% _.each(events,function(evt,index){
+    var clazz = evt.isHomeTeam ? '': 'armys';
+  %>
+  <li class="row">
+    <div class="col-24">
+      <p class="note-hd"><%= evt.time %></p>
+    </div>
+    <div class="col-74 <%= clazz%>">
+      <img src="../style/img/team_<%= evt.playerATeamLogoId %>.png"/>
+      <p class="gam-txt"><%= evt.description %> (<%= evt.teamScore%>)</p>
+    </div>
+  </li>
+  <% })%>
+</script>
+
+<!--小节结束模板-->
+<script id="j_game_event_period_end_tpl" type="text/template">
+  <% if(end) { %>
+  <p class="case-end"><%= end.description %></p>
+  <% } %>
+</script>
+
+
+

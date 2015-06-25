@@ -1,0 +1,1 @@
+(function(e){e.extend(MediaElementPlayer.prototype,{buildplaylist:function(e,t,n,r){if(!e.isVideo)return}})})(mejs.$)

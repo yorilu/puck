@@ -1,0 +1,38 @@
+<div class="data-vid">
+  <ul id="j_game_video_wrapper">
+  </ul>
+</div>
+
+<div class="no-data" style="display: none">
+  <p>抱歉，没有与当前赛事相关的精彩视频</p>
+</div>
+
+<script id="j_game_video_li_tpl" type="text/template">
+
+  <%for (var i in videoClipses){
+  var clip = videoClipses[i];
+  %>
+  <li class="column" data-path="<%= clip.path %>">
+    <div class="bg-img"><img src="<%= clip.snapshot%>"/></div>
+    <div class="big-pat v-overlay-small"></div>
+    <div class="commands">
+      <!--<a href="javascript:" class="tags">回放</a>-->
+      <p class="p"><%= clip.title%></p>
+      <div class="sd-name">
+        <a href="javascript:" class="tags">集锦</a>
+        <ul>
+          <% var num = 5-clip.level;
+            for(var j=0; j< clip.level;j++){
+          %>
+          <li class="dsk-star"></li>
+          <%} %>
+          <% for(var k =0 ; k< num;k++){%>
+          <li></li>
+          <%} %>
+        </ul>
+      </div>
+      <span class="time-gap">1:05:60</span>
+    </div>
+  </li>
+<% }%>
+</script>

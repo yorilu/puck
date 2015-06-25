@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui"/>
+    <meta name="apple-mobile-web-app-title" content="智慧运动场"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <link rel="stylesheet" type="text/css" href="/style/css/main.css"/>
+    <link rel="stylesheet" href="/style/videoplayer/mediaelementplayer.min.css" />
+    <title>智慧运动场</title>
+    <base href="/">
+
+    <script src="js/libs/require.js" data-main="main.js"></script>
+
+</head>
+<body>
+<section class="outwindow">
+   <!--UC 如果video 不设置初始值，动态改变src是，第一次无法播放 -->
+  <video id="js_main_video" height="180" width="320" preload="none" title="xxxx"  src=""></video>
+</section>
+
+<div class="puck-loading mask J_Puck_Loading"></div>
+<div class="puck-loading J_Puck_Loading">
+  <div class="logo"></div>
+</div>
+<!--<script src="http://192.168.1.54:8080/target/target-script-min.js#anonymous"></script>-->
+</body>
+</html>

@@ -1,0 +1,29 @@
+<div class="gymn-video">
+  <ul id="j_stadium_video_wrapper">
+    <% for(var i in videos) {
+      var video = videos[i];
+    %>
+    <li class="column" data-path="<%= video.path %>" data-title="<%= video.title%>">
+      <div class="bg-img"><img src="<%= video.snapshot %>"></div>
+      <p class="p"><%=video.title %></p>
+      <div class="big-pat v-overlay-large"></div>
+      <% if(i == 0) {%>
+      <a href="javascript:" id="filterBtn" class="screened"><span >筛选</span></a>
+      <% }%>
+    </li>
+    <% } %>
+  </ul>
+</div>
+
+<div id="j_stadium_info_select_layer" class="chose-tye" style="display: none;">
+  <div class="chose-main">
+    <p class="chose-hd">选择类型</p>
+    <ul id="j_stadium_info_select_ul">
+      <% for(var i in sportTypes) {
+        var type = sportTypes[i]; %>
+       <li data-sporttype="<%= type %>"><a href="javascript:"><img src="../style/img/sport2_<%= type %>.png"/></a></li>
+      <%}%>
+    </ul>
+    <a href="javascript:" class="sure" id="closeBtn">确定</a>
+  </div>
+</div>

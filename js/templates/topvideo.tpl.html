@@ -1,0 +1,42 @@
+<div class="head">
+      <nav>
+        <h1>精彩视频</h1>
+        <a href="javascript:" class="return js_back"><i class="pre-icon"></i></a>
+      </nav>
+    </div>
+    <!---->
+    <div class="wrapper">
+      <!--part1-->
+      <div class="container">
+        <div class="content3">
+          <ul class="ok-vedio row js_type">
+            <li class="col-25" data-value=""><a href="javascript:void(0);" class="tm-leng">全部</a></li>
+            <li class="col-25" data-value="football"><a href="javascript:void(0);">足球</a></li>
+            <li class="col-25" data-value="basketball"><a href="javascript:void(0);">篮球</a></li>
+            <li class="col-25" data-value="badminton"><a href="javascript:void(0);">羽毛球</a></li>
+          </ul>
+        </div>
+        <!--main-->
+        <div id="js_container">
+          
+        </div>
+        <!---->
+      </div>
+    </div>
+    <script type="text/template" id="topvideo_tpl">
+    <div class="main">
+          <ul id="js_container">
+        <%for(var i=0,len=data.length;i<len;i++){%>
+          <li class="column" data-path="<%=data[i].path%>" data-title="<%=data[i].title%>">
+                      <div class="bg-img"><img src="<%=data[i].snapshot%>"/></div>
+                      <p class="p"><%=data[i].title%></p>
+                      <div class="big-pat v-overlay-large"></div>
+                    </li> 
+        <%}%>
+          </ul>
+        </div>
+    </script>
+    <script type="text/template" id="no_topvideo_tpl">
+      <div class="video-no">暂无精彩视频</div>
+    </script>
+

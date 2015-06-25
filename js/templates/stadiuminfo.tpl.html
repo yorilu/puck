@@ -1,0 +1,64 @@
+<div class="gymn-main">
+  <div class="part-1">
+    <strong>地址</strong>
+    <p><%= address %></p>
+  </div>
+  <div class="part-1">
+    <strong>预定电话</strong>
+    <p class="phone"><a href="tel:<%= receiverPhone||''%>"><%= receiverPhone||''%></a> </p>
+  </div>
+  <div class="part-1">
+    <strong>工作时间</strong>
+    <% for(var i in businessHours){
+      var item = businessHours[i];
+    %>
+      <p><%= item.whatDay%> <%= item.startTime %> - <%= item.endTime %></p>
+    <% }%>
+  </div>
+  <div class="part-1">
+    <strong>支持的项目</strong>
+    <div class="part-item">
+      <% if(sportType == 'basketball') {%>
+      <span class="bsk-ball2"></span>
+      <% }else if(sportType == 'football') { %>
+      <span class="ft-ball2"></span>
+      <% }else if(sportType == 'badminton') { %>
+      <span class="bad-mtion2"></span>
+      <% }else if(sportType == 'swim') { %>
+      <span class="swim2"></span>
+      <% } else {%>
+      <span class="musclu"></span>
+      <% }%>
+    </div>
+  </div>
+  <div class="part-1">
+    <strong>球场特点</strong>
+    <div class="part-item">
+      <div class="row">
+        <% for (var i in stadiumFeatures) {
+          var feature = stadiumFeatures[i].feature;
+          if(feature.indexOf('停车')>-1){
+        %>
+           <div class="colm-2 parking"><a href="javascript:void(0)"><%= feature%></a></div>
+        <% }else if(feature == '免费休息区') { %>
+          <div class="colm-2 resting"><a href="javascript:void(0)">免费休息区</a></div>
+        <% }else if(feature == '器材出租') { %>
+          <div class="colm-2 rented"><a href="javascript:void(0)">器材出租</a></div>
+        <% }else if(feature.indexOf('饮料')>-1 || feature.indexOf('茶水')>-1) { %>
+          <div class="colm-2 drinks"><a href="javascript:void(0)"><%= feature%></a></div>
+        <% }else if(feature.indexOf('洗浴')>-1) { %>
+        <div class="colm-2 bathes"><a href="javascript:void(0)"><%= feature %></a></div>
+        <% } else if(feature == '柜子租用') {%>
+        <div class="colm-2 fauk"><a href="javascript:void(0)"><%= feature%></a></div>
+        <% } else if(feature == '器械维护') {%>
+        <div class="colm-2 armed"><a href="javascript:void(0)">器械维护</a></div>
+        <% }%>
+        <%}%>
+      </div>
+    </div>
+  </div>
+  <div class="part-1">
+    <strong>场馆简介</strong>
+    <p class="det-intro"><%= description %></p>
+  </div>
+</div>

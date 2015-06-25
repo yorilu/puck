@@ -1,0 +1,82 @@
+<div class="head1">
+  <nav>
+    <h1>
+      经典赛事
+    </h1>
+  </nav>
+</div>
+<div class="wrapper" id="J_index_game_wapper">
+
+</div>
+
+<!--渲染日期列表的模板-->
+<script id="index_games_date_list_tpl" type="text/x-template">
+  <% for (var i in data){  %>
+  <div class="container">
+    <div class="content1">
+      <span class="today"><%= data[i]%></span>
+    </div>
+    <div class="main">
+      <ul id="j_index_games_ui_<%= i %>">
+      </ul>
+    </div>
+  </div>
+  <%}%>
+</script>
+
+<!--渲染赛事列表的模板-->
+<script id="index_games_game_list_tpl" type="text/x-template">
+  <% for (var j in data) {
+  var game=data[j], clazz = (j%2)>0?'state2':'' ; %>
+  <li class="column2 <%=clazz %> J_game" data-gameid="<%= game.id%>" data-path="<%= game.livePushUrl%>"
+      data-status="<%= game.status%>" data-title="<%= game.stadiumName%>">
+    <div class="row team-bech">
+      <div class="col-25"><a href="javascript:void(0)" class="tm-logo"><img src="../style/img/team_<%=game.homeTeamLogoId||1 %>.png"/></a></div>
+      <div class="col-50">
+        <% if(game.status == 0){%>
+          <div class="contain2">未开始</div>
+          <div class="tm-detail">
+            <div class="col-33"><%=game.homeTeamName %></div>
+            <div class="col-33">VS</div>
+            <div class="col-33"><%=game.guestTeamName %></div>
+          </div>
+        <% } else { %>
+        <div class="row">
+          <div class="col-40">
+            <p id="<%= game.id +'_'+ game.homeTeamId + '_score'%>" class="bega"><%= game.teamAScore %></p>
+            <span class="score-name"><%=game.homeTeamName %></span>
+          </div>
+          <div class="col-20 point">︰<i class="compa">VS</i></div>
+          <div class="col-40">
+            <p id="<%= game.id +'_'+ game.guestTeamId + '_score'%>" class="bega"><%= game.teamBScore %></p>
+            <span class="score-name"><%= game.guestTeamName %></span>
+          </div>
+        </div>
+        <% } %>
+      </div>
+      <div class="col-25"><a href="javascript:void(0)" class="tm-logo"><img src="../style/img/team_<%=game.guestTeamLogoId||2 %>.png"/></a></div>
+    </div>
+    <!--mark-->
+    <div class="marked">
+      <% if(game.status == 0){var arr=game.startTime.replace(" ",":").replace(/\:/g,"-").split("-")%>
+       <a href="javascript:" class="mark-tm"><%=arr[3]+':'+arr[4]%></a>
+        <p class="conduct">进行直播</p>
+      <%} else if(game.status == 1){ %>
+        <a href="javascript:" class="lives">LIVE</a>
+        <p class="conduct">直播中...</p>
+      <%} else if(game.status == 2) {%>
+        <span>已结束</span>
+      <%}%>
+    </div>
+    <!--gameype-->
+    <a href="javascript:" class="span">
+      <% if(game.sportType == 'basketball'){%>
+       篮球
+      <%} else if(game.sportType == 'football'){%>
+        足球
+      <%}%>
+    </a>
+  </li>
+
+  <% } %>
+</script>
